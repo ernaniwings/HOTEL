@@ -12,12 +12,21 @@ namespace Hotel2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class client
+    public partial class appUser
     {
-        public int idClient { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public appUser()
+        {
+            this.hotels = new HashSet<hotel>();
+        }
+    
+        public int idUser { get; set; }
         public string name { get; set; }
-        public string cpf { get; set; }
-        public string phone { get; set; }
         public string email { get; set; }
+        public string password { get; set; }
+        public string card { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<hotel> hotels { get; set; }
     }
 }

@@ -9,15 +9,14 @@
 
 namespace Hotel2.Models
 {
+    using Base;
     using System;
     using System.Collections.Generic;
-    
-    public partial class room
+
+    public class Room : EntityBase
     {
-        public int idRoom { get; set; }
-        public int type { get; set; }
-        public Nullable<int> idHotel { get; set; }
-    
-        public virtual hotel hotel { get; set; }
+        public int Type { get; set; }
+        public int HotelId { get; set; }
+        public virtual Hotel Hotel { get; set; }
     }
 }

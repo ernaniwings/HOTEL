@@ -8,6 +8,7 @@ namespace Hotel2.Models
 {
     public class Product : EntityBase
     {
-
+        public double Value { get; set; }
+        public string Name { get; set; }
     }
 }

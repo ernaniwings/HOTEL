@@ -150,6 +150,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704171310454_fixedDatabase.cs" />
+    <Compile Include="Migrations\201704171310454_fixedDatabase.Designer.cs">
+      <DependentUpon>201704171310454_fixedDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Base\EntityBase.cs" />
     <Compile Include="Models\Billing.cs" />
@@ -219,6 +224,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704171310454_fixedDatabase.resx">
+      <DependentUpon>201704171310454_fixedDatabase.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

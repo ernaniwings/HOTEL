@@ -24,5 +24,7 @@ namespace Hotel2.Models
             //modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
         }
+
+        public System.Data.Entity.DbSet<Hotel2.Models.Product> Products { get; set; }
     }
 }

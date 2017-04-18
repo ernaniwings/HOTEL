@@ -26,13 +26,5 @@ namespace Hotel2.Controllers
 
             return View();
         }
-        
-        public ActionResult Home()
-        {
-            ViewBag.ListaProduto = new List<string>() { "Produto1", "Produto2", "Produto3" };
-            ViewBag.ListaHotel = new List<string>() { "Hotel1", "Hotel2", "Hotel3" };
-            ViewBag.ListCliente = new List<string>() { "Cliente1", "Cliente2", "Cliente3" };
-            return View();
-        }
     }
 }

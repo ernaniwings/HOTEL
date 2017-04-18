@@ -22,3 +22,9 @@ select,
 textarea {
     max-width: 280px;
 }
+.sideBar{
+    height:100%;
+    width:25%;
+    text-align:left;
+    background-color:deepskyblue;
+}

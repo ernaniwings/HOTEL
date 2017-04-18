@@ -1,0 +1,41 @@
+﻿@model Hotel2.Models.Hotel
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>Bem Vindo</h2>
+
+<div class="nav navbar-default nav-stacked">
+   
+    <ul>
+        <li class="input-group input-group-lg">
+            <span id="First" class="label label-primary"><span id="collapseDown" class="glyphicon glyphicon-collapse-down"></span><span id="collapseUp" style="display:none;" class="glyphicon glyphicon-collapse-up"></span><span class="label label-primary">Hotéis</span></span>
+            <ul class="HotelTab">
+                @{
+                    foreach (string h in ViewBag.ListaHotel)
+                    {
+                        <li class="input-group input-group-lg"><span class="label label-primary">@h</span></li>
+                    }
+                }
+                <li class="input-group input-group-lg"><span class="label label-primary glyphicon glyphicon-plus">Adicionar hotel</span></li>
+                
+            </ul>
+        </li>
+        <li class="input-group input-group-lg">
+            <span class="label label-primary">Clientes</span>
+        </li>
+        <li class="input-group input-group-lg">
+            <span class="label label-primary">Produtos</span>
+        </li>
+    </ul>
+    
+
+</div>
+<div class="panel panel-default">
+    <div class="panel-title"></div>
+    <div class="panel-body"></div>
+    <div class="panel-footer"></div>
+</div>

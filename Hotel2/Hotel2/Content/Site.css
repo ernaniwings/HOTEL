@@ -1,6 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    height: 100%;
+    margin: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,9 +24,57 @@ select,
 textarea {
     max-width: 280px;
 }
-.sideBar{
-    height:100%;
-    width:25%;
-    text-align:left;
-    background-color:deepskyblue;
+
+.sideBar {
+    height: 100%;
+    width: 25%;
+    text-align: left;
+    background-color: deepskyblue;
+}
+
+.main {
+    height: inherit;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400i|Work+Sans:500');
+
+/* The hero image */
+.hero-image {
+    /* The image used */
+    background-image: url("bg1.jpg");
+    background-color: black;
+    /* Set a specific height */
+    position:relative;
+    height: 100%;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+    .hero-text h1 {
+        color: rgba(16,16,86,0.7);
+        font-size: 7em;
+        font-family: 'Libre Baskerville', serif;
+    }
+
+    .hero-text h3 {
+        color: rgb(190,179,196);
+        font-family: 'Work Sans', sans-serif;
+        font-size: 2em;
+    }
+
+@media (min-width: 1200px) {
+    .container>.hero-image{
+        max-width: 100%;
+    }
 }

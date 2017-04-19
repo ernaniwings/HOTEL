@@ -26,6 +26,11 @@ namespace Hotel2.Controllers
             var familyName = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("family_name").Value;
             var fullName = firstName + " " + familyName;
 
+            if (string.IsNullOrWhiteSpace(fullName))
+            {
+                fullName = System.Security.Claims.ClaimsPrincipal.Current.FindFirst("nickname").Value;
+            }
+
             using (context)
             {
                 try

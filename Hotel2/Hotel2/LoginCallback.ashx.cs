@@ -44,6 +44,7 @@ namespace Hotel2
                 new KeyValuePair<string, object>("provider", profile.Identities.First().Provider)
             };
 
+
             // NOTE: Uncomment the following code in order to include claims from associated identities
             //profile.Identities.ToList().ForEach(i =>
             //{
@@ -68,6 +69,7 @@ namespace Hotel2
 
             context.Response.Redirect("/");
         }
+        
 
         public bool IsReusable
         {

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Hotel2.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -15,7 +15,7 @@ namespace Hotel2.Controllers
         [Authorize]
         public ActionResult About()
         {
-            ViewBag.Message = "Projeto realizado para as disciplinas de Computação em nuvem e Tecnicas de projeto de sistemas.";
+            ViewBag.Message = "Projeto realizado para as disciplinas de Computação em nuvem e Tecnicas de projeto de sistemas." + CurrentUser.Email;
 
             return View();
         }

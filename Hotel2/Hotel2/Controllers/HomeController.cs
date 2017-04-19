@@ -12,7 +12,7 @@ namespace Hotel2.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Projeto realizado para as disciplinas de Computação em nuvem e Tecnicas de projeto de sistemas.";

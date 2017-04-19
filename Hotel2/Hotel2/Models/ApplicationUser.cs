@@ -8,6 +8,10 @@ namespace Hotel2.Models
 {
     public class ApplicationUser : EntityBase
     {
+        public ApplicationUser()
+        {
+            Hotels = new List<Hotel>();
+        }
         public string Name { get; set; }
         public string CreditCardNumber { get; set; }
         public string Pass { get; set; }

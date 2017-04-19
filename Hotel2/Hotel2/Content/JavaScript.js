@@ -1,6 +1,10 @@
 ﻿$(document).ready(function () {
 
-    
+    $("#NewHotel").click(function () {
+
+
+
+    })
 
     $("#First").click(function () {
         if ($("#collapseDown").css("display") === "none") {

@@ -25,11 +25,13 @@ textarea {
     max-width: 280px;
 }
 
-.sideBar {
+#sideBar {
     height: 100%;
     width: 25%;
     text-align: left;
-    background-color: deepskyblue;
+    padding-left:0px;
+    margin-left:0px;
+    position:absolute;
 }
 
 .main {

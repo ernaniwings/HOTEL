@@ -30,7 +30,7 @@ namespace Hotel2.Controllers
         public ActionResult Home()
         {
             ViewBag.ListaProduto = new List<string>() { "Produto1", "Produto2", "Produto3" };
-            ViewBag.ListaHotel = new List<string>() { "Hotel1", "Hotel2", "Hotel3" };
+            ViewBag.ListaHotel = new List<Hotel2.Models.Hotel>() { new Models.Hotel() { Name="Hotel1", Rooms = new List<Models.Room>() { new Models.Room() { Id=1,Type=1 } } } };
             ViewBag.ListCliente = new List<string>() { "Cliente1", "Cliente2", "Cliente3" };
             return View();
         }

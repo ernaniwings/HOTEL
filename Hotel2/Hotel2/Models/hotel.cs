@@ -6,6 +6,11 @@ namespace Hotel2.Models
 
     public class Hotel : EntityBase
     {
+        public Hotel()
+        {
+            Rooms = new List<Room>();
+            Clients = new List<Client>();
+        }
         public string Name { get; set; }
         public string Description { get; set; }
 

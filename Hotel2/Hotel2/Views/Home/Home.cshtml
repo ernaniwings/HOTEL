@@ -12,53 +12,38 @@
    
     <ul>
         <li class="input-group input-group-lg">
-            <span id="First" class="label label-primary"><span id="collapseDown" class="glyphicon glyphicon-collapse-down"></span><span id="collapseUp" style="display:none;" class="glyphicon glyphicon-collapse-up"></span><span class="label label-primary">Hotéis</span></span>
+            <span id="First" class="btn btn-default"><span id="collapseDown" class="glyphicon glyphicon-collapse-down"></span><span id="collapseUp" style="display:none;" class="glyphicon glyphicon-collapse-up"></span><span>Hotéis</span></span>
             <ul class="HotelTab">
                 @{
                     foreach (Hotel2.Models.Hotel h in ViewBag.ListaHotel)
                     {
-                        <li class="input-group input-group-lg"><span class="label label-primary">@h.Name</span></li>
+                        <li class="input-group input-group-lg"><span id="@h.Id" class="btn btn-default">@h.Name</span></li>
                     }
                 }
-                <li class="input-group input-group-lg" id="NewHotel"><span class="label label-primary glyphicon glyphicon-plus">Adicionar hotel</span></li>
+                <li class="input-group input-group-lg" id="NewHotel"><span id="span" class="btn btn-default glyphicon glyphicon-plus">Adicionar hotel</span></li>
                 
             </ul>
         </li>
         <li class="input-group input-group-lg">
-            <span class="label label-primary">Clientes</span>
+            <span class="btn btn-default">Clientes</span>
         </li>
         <li class="input-group input-group-lg">
-            <span class="label label-primary">Produtos</span>
+            <span class="btn btn-default">Produtos</span>
         </li>
     </ul>
     
 
 </div>
-<div id="hotel" class="panel panel-default">
-    <div class="panel panel-title">Hoteis</div>
+<div id="PartialView" class="panel panel-default">
+    <div class="panel panel-title"></div>
     <div class="panel panel-body">
         
-        @foreach (Hotel2.Models.Hotel h in ViewBag.ListaHotel)
-        {
-            <h1>@h.Name</h1>
+        
+            
             <ul>
-                @foreach (Hotel2.Models.Room r in @h.Rooms)
-                {
-                    <li>@r.Id   -  @r.Type</li>
-                }
+                
                 
             </ul>
-        }
+        
     </div>
-    <div class="panel panel-footer"></div>
-</div>
-<div id="clientes" class="panel panel-default">
-    <div class="panel-title"></div>
-    <div class="panel-body"></div>
-    <div class="panel-footer"></div>
-</div>
-<div id="produtos" class="panel panel-default">
-    <div class="panel-title"></div>
-    <div class="panel-body"></div>
-    <div class="panel-footer"></div>
 </div>

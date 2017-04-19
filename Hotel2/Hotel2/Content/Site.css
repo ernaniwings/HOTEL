@@ -31,9 +31,15 @@ textarea {
     text-align: left;
     padding-left:0px;
     margin-left:0px;
-    position:absolute;
+    position:initial;
 }
-
+#PartialView{
+    position:relative;
+    width:75%;
+    height:100%;
+    text-align:right;
+    
+}
 .main {
     height: inherit;
 }

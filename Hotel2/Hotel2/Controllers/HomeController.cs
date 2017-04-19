@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Hotel2.Models;
+using Hotel2.Controllers;
 
 namespace Hotel2.Controllers
 {
@@ -33,6 +35,11 @@ namespace Hotel2.Controllers
             ViewBag.ListaHotel = new List<Hotel2.Models.Hotel>() { new Models.Hotel() { Name="Hotel1", Rooms = new List<Models.Room>() { new Models.Room() { Id=1,Type=1 } } } };
             ViewBag.ListCliente = new List<string>() { "Cliente1", "Cliente2", "Cliente3" };
             return View();
+        }
+        public ActionResult ActionResult(int id)
+        {
+            
+            return PartialView("HotelDetails", new Hotel2.Models.Hotel());
         }
     }
 }

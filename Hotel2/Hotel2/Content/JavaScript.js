@@ -1,8 +1,39 @@
 ﻿$(document).ready(function () {
 
-    $("#NewHotel").click(function () {
+    $("#0").click(function () {
 
+        $.get()
 
+    })
+
+    $("#span").click(function () {
+        var div = document.createElement("div")
+        div.className = "input-group"
+        div.id = "inputgroup"
+        $("#NewHotel").append(div)
+        
+        var input = document.createElement("input")
+        input.id = "CadHotel"
+        input.type = "text"
+        input.placeholder = "Nome do hotel"
+        input.className = "form-control"
+        div.appendChild(input)
+        var span = document.createElement("span")
+        span.className = "input-group-btn"
+        span.id = "spanbtn"
+        div.appendChild(span)
+        var button = document.createElement("button")
+        button.className = "btn btn-default"
+        button.type = "button"
+        button.innerHTML = "Go"
+        span.appendChild(button)
+            
+            
+        
+
+        $(this).remove();
+        
+        
 
     })
 

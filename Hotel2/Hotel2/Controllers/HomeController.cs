@@ -36,10 +36,14 @@ namespace Hotel2.Controllers
             ViewBag.ListCliente = new List<string>() { "Cliente1", "Cliente2", "Cliente3" };
             return View();
         }
-        public ActionResult ActionResult(int id)
+        public Hotel Search(int id)
         {
+
+            using (HotelDbContext ct = new HotelDbContext())
+            {
+                return ct.Hotels.FirstOrDefault(x => x.Id == id);
+            }
             
-            return PartialView("HotelDetails", new Hotel2.Models.Hotel());
         }
     }
 }

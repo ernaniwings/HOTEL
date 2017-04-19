@@ -1,8 +1,17 @@
 ﻿$(document).ready(function () {
 
     $("#0").click(function () {
+        $.get($(this).id, )
+        $.ajax({
+            url: "Home/Search",
+            type: "GET",
+            dataType: "html",
+            data: $(this).id,
+            
 
-        $.get()
+        }).done(function (data) {
+            alert(data)
+        })
 
     })
 

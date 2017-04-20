@@ -1,0 +1,19 @@
+﻿<div style="text-align:left;" id="PartialView" class="panel panel-primary">
+    <div id="Title" class="panel panel-heading"><h1>Produtos</h1></div>
+    <div id="Rooms" class="panel panel-footer">
+        <div class="row">
+            @using (Hotel2.Models.HotelDbContext ct = new Hotel2.Models.HotelDbContext()) {
+                foreach (Hotel2.Models.Product p in ct.Products)
+                {
+                    <div class="col-md-4">
+                        @p.Name
+                        <br>
+                        @p.Value
+                    </div>
+                }
+
+            }
+        </div>
+        
+    </div>
+</div>

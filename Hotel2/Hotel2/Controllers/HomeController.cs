@@ -10,6 +10,9 @@ namespace Hotel2.Controllers
 {
     public class HomeController : BaseController
     {
+
+        private HotelDbContext db = new HotelDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -28,21 +31,95 @@ namespace Hotel2.Controllers
 
             return View();
         }
-        
+        [Authorize]
         public ActionResult Home()
         {
-            ViewBag.ListaProduto = new List<string>() { "Produto1", "Produto2", "Produto3" };
-            ViewBag.ListaHotel = new List<Hotel2.Models.Hotel>() { new Models.Hotel() { Name="Hotel1", Rooms = new List<Models.Room>() { new Models.Room() { Id=1,Type=1 } } } };
-            ViewBag.ListCliente = new List<string>() { "Cliente1", "Cliente2", "Cliente3" };
+
+            ViewBag.ListaHotel = db.Hotels.ToList().Where(x => x.ApplicationUserId.Equals(CurrentUser.Id));
             return View();
         }
-        public Hotel Search(int id)
+
+        public string CreateHotel(string id)
+        {
+            string nome = id;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Hotel hotel = new Hotel()
+                    {
+                        Name = nome,
+                        Description = "Your Description Here",
+                        ApplicationUserId = CurrentUser.Id
+                    };
+                    db.Hotels.Add(hotel);
+                    db.SaveChanges();
+                }
+                return "Sucess";
+            }
+            catch (Exception e)
+            {
+                return "Failure: " + e.Message + " ---- InnerException: " + e.InnerException;
+            }
+
+        }
+
+        public PartialViewResult ShowReservation(int id)
+        {
+            try
+            {
+                List<Client> Clients = new List<Client>();
+                Clients = db.Clients.ToList();
+                
+
+                ViewBag.Reservation = new Reservation() { Room = db.Rooms.FirstOrDefault(x => x.Id.Equals(id)) };
+                //ViewBag.Clients = Clients;
+                
+
+                return PartialView("PartialReservation", Clients);
+            }
+            catch (Exception)
+            {
+                return PartialView("Error");
+            }
+
+        }
+        public string CreateRoom(string id, string quarto)
+        {
+            try
+            {
+               
+                Room room = new Room()
+                {
+                    HotelId = Convert.ToInt32(id),
+                    Type = Convert.ToInt32(quarto),
+                };
+                db.Rooms.Add(room);
+                db.SaveChanges();
+                return "Sucess";
+            }catch(Exception e)
+            {
+                return "Failure; " + e.Message + e.InnerException;
+            }
+        }
+        public PartialViewResult getClients()
+        {
+            return PartialView("PartialClient");
+        }
+        public PartialViewResult getProducts()
+        {
+            return PartialView("PartialProduct");
+        }
+        public PartialViewResult Search(int id)
         {
 
-            using (HotelDbContext ct = new HotelDbContext())
-            {
-                return ct.Hotels.FirstOrDefault(x => x.Id == id);
-            }
+            
+
+            Hotel hotel = db.Hotels.FirstOrDefault(x => x.Id.Equals(id));
+                
+            ViewBag.Hotel = hotel;
+            return PartialView("PartialHotel");
+            
             
         }
     }

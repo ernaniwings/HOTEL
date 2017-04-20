@@ -1,20 +1,57 @@
 ﻿$(document).ready(function () {
+    $("span[name='Products']").click(function () {
+        $("div#teste > div").remove();
+        $.post("getProducts", function (data) {
 
-    $("#0").click(function () {
-        $.get($(this).id, )
-        $.ajax({
-            url: "Home/Search",
-            type: "GET",
-            dataType: "html",
-            data: $(this).id,
-            
 
-        }).done(function (data) {
-            alert(data)
-        })
+            $("#teste").append(data);
+
+        });
+
+    });
+    $("span[name='Clients']").click(function () {
+        $("div#teste > div").remove();
+        $.post("getClients", function (data) {
+
+
+            $("#teste").append(data);
+
+        });
 
     })
+    $("span[name|='hotel']").click(function () {
 
+        $("div#teste > div").remove();
+        $.post("Search/" + $(this).attr("id"), function (data) {
+
+
+            $("#teste").append(data);
+
+        });
+        
+
+    });
+
+    function create() {
+        var url = "CreateHotel/" + $("#CadHotel").val();
+        
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: $("#CadHotel")
+        }).done(function (data) {
+            //alert(data)
+        })
+        $("#ulSideBar").load(location.href + " #ulSideBar");
+        $("#HotelTab li:last-child").fadeOut(100, function () {
+            $(this).fadeIn();
+            $(this).animate({ "border-color": "#add8e6" }, 500, function (element) {
+                element.animate({ "border-color": "black" }, 500)
+                })
+        });
+                
+    };
+    
     $("#span").click(function () {
         var div = document.createElement("div")
         div.className = "input-group"
@@ -31,17 +68,21 @@
         span.className = "input-group-btn"
         span.id = "spanbtn"
         div.appendChild(span)
-        var button = document.createElement("button")
+        var button = document.createElement("input")
         button.className = "btn btn-default"
-        button.type = "button"
-        button.innerHTML = "Go"
+        button.type = "submit"
+        button.value = "go"
+        button.onclick = create
+        button.id = "go"
         span.appendChild(button)
             
             
         
 
         $(this).remove();
-        
+        var anotherli = document.createElement("li")
+        anotherli.append($(this))
+        $("#HotelTab").append(anotherli)
         
 
     })

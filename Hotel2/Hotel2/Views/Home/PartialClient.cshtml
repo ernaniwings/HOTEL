@@ -1,0 +1,20 @@
+﻿<div style="text-align:left;" id="PartialView" class="panel panel-primary">
+    <div id="Title" class="panel panel-heading"><h1>Clientes</h1></div>
+    <div id="Rooms" class="panel panel-footer">
+        <div class="row">
+            @using (Hotel2.Models.HotelDbContext ct = new Hotel2.Models.HotelDbContext())
+            {
+                foreach (Hotel2.Models.Client c in ct.Clients)
+                {
+                    <div class="col-md-4">
+                        @c.Name
+                        <br>
+                        @c.Cpf
+                    </div>
+                }
+
+            }
+        </div>
+
+    </div>
+</div>

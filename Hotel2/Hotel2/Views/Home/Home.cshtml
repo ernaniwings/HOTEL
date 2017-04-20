@@ -5,38 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     
 }
-
+<style>
+    body {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #ulSideBar {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+</style>
 <h2>Bem Vindo</h2>
+<div class="row">
 
-<div id="sideBar" class="nav navbar-default nav-stacked">
-   
-    <ul>
-        <li class="input-group input-group-lg">
-            <span id="First" class="btn btn-default"><span id="collapseDown" class="glyphicon glyphicon-collapse-down"></span><span id="collapseUp" style="display:none;" class="glyphicon glyphicon-collapse-up"></span><span>Hotéis</span></span>
-            <ul class="HotelTab">
-                @{
-                    foreach (Hotel2.Models.Hotel h in ViewBag.ListaHotel)
-                    {
-                        <li class="input-group input-group-lg"><span id="@h.Id" class="btn btn-default">@h.Name</span></li>
+
+    <div id="sideBar" class="col-md-4" style="width:20%; padding-right:0px; padding-top:0px;">
+
+        <ul id="ulSideBar">
+            <li class="input-group input-group-lg">
+                <span id="First" class="btn btn-primary"><span id="collapseDown" class="glyphicon glyphicon-collapse-down"></span><span id="collapseUp" style="display:none;" class="glyphicon glyphicon-collapse-up"></span><span>Hotéis</span></span>
+                <ul class="HotelTab">
+                    @{
+                        foreach (Hotel2.Models.Hotel h in ViewBag.ListaHotel)
+                        {
+                            <li class="input-group input-group-lg"><span name="hotel" id="@h.Id" class="btn btn-primary">@h.Name</span></li>
+                        }
                     }
-                }
-                <li class="input-group input-group-lg" id="NewHotel"><span id="span" class="btn btn-default glyphicon glyphicon-plus">Adicionar hotel</span></li>
-                
-            </ul>
-        </li>
-        <li class="input-group input-group-lg">
-            <span class="btn btn-default">Clientes</span>
-        </li>
-        <li class="input-group input-group-lg">
-            <span class="btn btn-default">Produtos</span>
-        </li>
-    </ul>
-    
+                    <li class="input-group input-group-lg" id="NewHotel"><span id="span" class="btn btn-primary glyphicon glyphicon-plus">Adicionar hotel</span></li>
 
-</div>
-<div id="PartialView" class="panel panel-default">
-    <div id="Title" class="panel panel-body"></div>
-    <div id="Rooms" class="panel panel-footer">
-        
+                </ul>
+            </li>
+            <li class="input-group input-group-lg">
+                <span name="Clients" class="btn btn-primary">Clientes</span>
+            </li>
+            <li class="input-group input-group-lg">
+                <span name="Products" class="btn btn-primary">Produtos</span>
+            </li>
+        </ul>
+
+
+    </div>
+    <div class="col-md-8" id="teste" style="width:80%;">
     </div>
 </div>

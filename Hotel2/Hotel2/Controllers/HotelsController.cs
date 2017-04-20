@@ -60,7 +60,7 @@ namespace Hotel2.Controllers
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Name", hotel.ApplicationUserId);
             return View(hotel);
         }
-
+        
         // GET: Hotels/Edit/5
         public ActionResult Edit(int? id)
         {

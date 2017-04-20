@@ -1,0 +1,137 @@
+﻿<style>
+    a{
+        text-decoration:none;
+    }
+
+</style>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $("button[name|='reservation']").click(function () {
+            
+            //$.post(encodeURI(("ShowReservation/" + $(this).attr("id")).toString()), function (data) {
+            //    $("#appendHere").append(data)
+
+            //});
+            
+            $("#show").trigger("click");
+            $("#quarto").val($(this).attr("id"))
+            
+            
+        })
+        $("button[id|='CadQuarto']").click(function () {
+            //$.post(encodeURI(("CreateRoom/" + $("#CurrentHotelId").val() + "+" + $("#RoomType").val()).toString()), function (data) {
+            //    $("#appendHere").append(data)
+            //    alert(data)
+            //})
+            var url = ("CreateRoom/" + $("#CurrentHotelId").val() +"/"+ $("#RoomType").val());
+
+            $.ajax({
+                url: url,
+                type: "POST"
+            }).done(function (data) {
+                alert(data)
+                if (data === "Sucess") {
+                    $("#Close").submit();
+                }
+            });
+            
+        })
+        
+    })
+</script>
+<button style="display:none;" data-toggle="modal" id="show" data-target="#modalzinho" name="showForm"></button>
+<input type="hidden" style="display:none;" value="@Ajax.ViewBag.hotel.Id" id="CurrentHotelId" />
+<div style="text-align:left;" id="PartialView" class="panel panel-primary">
+    <div id="Title" class="panel panel-heading"><h1>@Ajax.ViewBag.hotel.Name</h1></div>
+    <div id="Rooms" class="panel panel-footer">
+        <div class="row">
+            @{
+                if (null != Ajax.ViewBag.hotel.Rooms)
+                {
+                    foreach (Hotel2.Models.Room r in Ajax.ViewBag.hotel.Rooms)
+                    {
+                        <div class="col-md-4">
+                            Quarto @r.Id -
+                            @if (r.Type == 0)
+                            {
+                                @Html.Label("Solteiro")
+                            }
+                            else
+                            {
+                                @Html.Label("Casal")
+                            }
+                            <br>
+                            <button name="reservation" class="btn btn-primary" id="@r.Id" value="@r.Id">Reservar!</button>
+                        </div>
+                    }
+                }
+
+
+
+
+            }
+        </div>
+        <div class="row">
+            <div class="col-lg-12"><button class="btn btn-primary center" data-toggle="modal" data-target="#modal" name="showForm">Cadastrar quarto</button></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="modalzinho" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn btn-danger" type="button" id="Close" style="float:right;" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Realizar reserva</h4>
+            </div>
+            <div class="modal-body">
+                <input class="btn btn-primary" type="text" id="quarto" value="" disabled="disabled" />
+                <input class="btn btn-primary" type="date" id="checkIn" /><br />
+                <input class="btn btn-primary" type="date" id="checkOut" /><br />
+                @using (Hotel2.Models.HotelDbContext ct = new Hotel2.Models.HotelDbContext())
+                {
+                    List<SelectListItem> select = new List<SelectListItem>();
+                    foreach (Hotel2.Models.Client c in ct.Clients.ToList())
+                    {
+                        select.Add(new SelectListItem() { Text = c.Name, Value = Convert.ToString(c.Id) });
+                    }
+                    @Html.DropDownList("Client", select )
+                }
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                <button class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="btn btn-danger" type="button" id="Close" style="float:right;" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cadastrar Quarto</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <input type="text" placeholder="Tipo do quarto" id="RoomType" class="form-control btn btn-primary" />
+                    <span class="input-group-btn"><button id="CadQuarto" class="btn btn-primary">Go!</button></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+</div>

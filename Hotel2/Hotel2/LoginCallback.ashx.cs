@@ -67,7 +67,7 @@ namespace Hotel2
                 context.Response.Redirect(state["ru"], true);
             }
 
-            context.Response.Redirect("/");
+            context.Response.Redirect("/hotels");
         }
         
 

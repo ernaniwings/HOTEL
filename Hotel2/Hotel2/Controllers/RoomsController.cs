@@ -15,9 +15,9 @@ namespace Hotel2.Controllers
         private HotelDbContext db = new HotelDbContext();
 
         // GET: Rooms
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            var rooms = db.Rooms.Include(r => r.Hotel);
+            var rooms = db.Rooms.Include(r => r.Hotel).Where(x => x.HotelId == id);
             return View(rooms.ToList());
         }
 

@@ -10,6 +10,7 @@ using Hotel2.Models;
 
 namespace Hotel2.Controllers
 {
+    [Authorize]
     public class RoomsController : Controller
     {
         private HotelDbContext db = new HotelDbContext();

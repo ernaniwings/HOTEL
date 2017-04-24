@@ -10,14 +10,15 @@ using Hotel2.Models;
 
 namespace Hotel2.Controllers
 {
-    public class HotelsController : Controller
+    [Authorize]
+    public class HotelsController : BaseController
     {
         private HotelDbContext db = new HotelDbContext();
 
         // GET: Hotels
         public ActionResult Index()
         {
-            var hotels = db.Hotels.Include(h => h.ApplicationUser);
+            var hotels = db.Hotels.Include(h => h.ApplicationUser).Where(x => x.ApplicationUserId == CurrentUser.Id);
             return View(hotels.ToList());
         }
 

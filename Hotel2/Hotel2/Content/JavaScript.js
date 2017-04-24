@@ -47,7 +47,7 @@
             $(this).fadeIn();
             $(this).animate({ "border-color": "#add8e6" }, 500, function (element) {
                 element.animate({ "border-color": "black" }, 500)
-                })
+            })
         });
                 
     };

@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        
+            
         $("button[name|='reservation']").click(function () {
             
             //$.post(encodeURI(("ShowReservation/" + $(this).attr("id")).toString()), function (data) {
@@ -31,10 +31,9 @@
             $.ajax({
                 url: url,
                 type: "POST"
-            }).done(function (data) {
-                alert(data)
+            }).then(function (data) {
                 if (data === "Sucess") {
-                    $("#Close").submit();
+                    $("#Close").trigger("click");
                 }
             });
             
